@@ -1,7 +1,10 @@
 import Link from "next/link";
 import ProjectCard from "./ProjectCard";
+import { getRepos } from "@/lib/github";
 
-export default function LatestProjects() {
+export default async function LatestProjects() {
+  const repos = await getRepos(12);
+
   return (
     <div>
       <div className="my-5 flex items-center justify-between">
@@ -16,13 +19,8 @@ export default function LatestProjects() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-        {[...Array(5)].map((_, index) => (
-          <ProjectCard
-            key={index}
-            title="Project 1"
-            description="Description of Project 1"
-            tags={["Tag 1", "Tag 2"]}
-          />
+        {repos.map((repo) => (
+          <ProjectCard key={repo.id} repo={repo} />
         ))}
       </div>
     </div>
