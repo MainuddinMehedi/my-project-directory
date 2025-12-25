@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ProjectCard from "@/components/ProjectCard";
-import { getRepos } from "@/lib/github";
+import { getAllProjects } from "@/service/projects";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata = {
@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 export default async function ProjectsPage() {
-  const repos = await getRepos();
+  const projects = await getAllProjects();
 
   return (
     <div className="py-10 min-h-screen">
@@ -26,14 +26,14 @@ export default async function ProjectsPage() {
           All Projects
         </h1>
         <p className="text-muted-foreground text-lg max-w-2xl">
-          A collection of {repos.length} repositories including open source
+          A collection of {projects.length} repositories including open source
           libraries, experiments, and learning exercises.
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {repos.map((repo) => (
-          <ProjectCard key={repo.id} repo={repo} />
+        {projects.map((project: any) => (
+          <ProjectCard key={project._id} project={project} />
         ))}
       </div>
     </div>

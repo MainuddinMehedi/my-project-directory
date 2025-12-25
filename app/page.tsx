@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="flex flex-col justify-between min-h-screen">
       <div>
-        <h1 className="text-[56px] sm:text-[76px] font-extrabold text-foreground/80 text-center my-10">
+        <h1 className="text-[56px] sm:text-[76px] font-extrabold text-center my-16 bg-linear-to-r from-primary to-primary/70 bg-clip-text text-transparent tracking-tight leading-tight">
           Mainuddin&apos;s Projects Directory
         </h1>
 
